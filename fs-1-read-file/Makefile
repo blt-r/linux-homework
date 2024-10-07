@@ -12,5 +12,5 @@ clean:
 read-file: read-file.o
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
-*.o: *.cpp
+%.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $^

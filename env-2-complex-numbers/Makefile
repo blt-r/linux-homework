@@ -12,5 +12,5 @@ clean:
 main: main.o Complex.o SortComplex.o
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
-*.o: *.cpp
+%.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $^
