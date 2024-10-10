@@ -1,9 +1,9 @@
 #include <iostream>
 
+#include <cstring>
+#include <fcntl.h>
 #include <sys/types.h>
 #include <unistd.h>
-#include <fcntl.h>
-#include <cstring>
 
 // 128 MiB buffer
 constexpr size_t BUF_SIZE = 128 * 1024;
@@ -44,5 +44,5 @@ int main(int argc, char *argv[]) {
     }
 
     close(fd); // ignore the error if it happens
-  }  
+  }
 }

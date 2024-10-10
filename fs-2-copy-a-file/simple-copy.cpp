@@ -2,8 +2,8 @@
 
 #include <cstring>
 #include <fcntl.h>
-#include <sys/types.h>
 #include <sys/stat.h>
+#include <sys/types.h>
 #include <unistd.h>
 
 // 128 MiB buffer
@@ -32,7 +32,6 @@ int main(int argc, char *argv[]) {
     perror(argv[0]);
     exit(1);
   }
-
 
   while (true) {
     ssize_t bytes_read = read(src_fd, buf, BUF_SIZE);
