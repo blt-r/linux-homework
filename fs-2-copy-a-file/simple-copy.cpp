@@ -53,6 +53,17 @@ int main(int argc, char *argv[]) {
     }
   }
 
+  off_t len = lseek(dst_fd, 0, SEEK_CUR);
+  if (len < 0) {
+    perror(argv[0]);
+    exit(1);
+  }
+
+  if (ftruncate(dst_fd, len) < 0) {
+    perror(argv[0]);
+    exit(1);
+  }
+
   // ignore the error if it happens
   close(src_fd);
   close(dst_fd);
