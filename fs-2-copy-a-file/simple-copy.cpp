@@ -32,6 +32,11 @@ int main(int argc, char *argv[]) {
     perror(argv[0]);
     exit(1);
   }
+  if (ftruncate(dst_fd, 0) < 0) {
+    perror(argv[0]);
+    exit(1);
+  }
+
 
   while (true) {
     ssize_t bytes_read = read(src_fd, buf, BUF_SIZE);
@@ -51,17 +56,6 @@ int main(int argc, char *argv[]) {
     if (bytes_read < ssize_t(BUF_SIZE)) {
       break;
     }
-  }
-
-  off_t len = lseek(dst_fd, 0, SEEK_CUR);
-  if (len < 0) {
-    perror(argv[0]);
-    exit(1);
-  }
-
-  if (ftruncate(dst_fd, len) < 0) {
-    perror(argv[0]);
-    exit(1);
   }
 
   // ignore the error if it happens
