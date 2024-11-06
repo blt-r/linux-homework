@@ -131,6 +131,10 @@ const char *starts_with(const char *haystack, const char *needle) {
 #define ANSI_RESET_FG "\e\[m"
 
 void prompt() {
+  if (!isatty(STDIN_FILENO)) {
+    return;
+  }
+
   char *pwd = get_current_dir_name();
   char *home = getenv("HOME");
 
